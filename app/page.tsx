@@ -1,4 +1,5 @@
 'use client'
+import { FloatingButtons } from '@/components/FloatingButtons'
 
 import { useState, useEffect } from 'react'
 import { words, Word } from '@/data/words'
@@ -174,6 +175,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 relative">
+      <FloatingButtons
+        currentIndex={currentWordIndex}
+        totalWords={words.length}
+        learnedCount={learnedWords.size}
+        onReset={resetProgress}
+      />
       
       {/* 极简顶部栏 - 只显示最核心信息 */}
       <div className="absolute top-0 left-0 right-0 z-10">
@@ -258,7 +265,7 @@ export default function Home() {
       )}
 
       {/* 主学习区域 - 绝对居中 */}
-      <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="min-h-screen flex items-center justify-center px-4 pt-24">
         <div className="w-full max-w-2xl">
           
           {/* 标题 - 简洁版 */}
